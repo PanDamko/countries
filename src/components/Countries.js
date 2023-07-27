@@ -7,32 +7,37 @@ import styles from './Counstris.module.css'
 const Countries = ({ countries }) => {
 
   const[filterRegion,setFilterRegion]=useState([]);
-  useEffect(()=>{filterCountries("firstrun");},[countries]);
+  const[value, setValue]=useState("All");
+  
+  useEffect(()=>{filterCountries();},[value,countries]);
 
 
-  const filterCountries = (filter)=>{
-  if(filter === "firstrun"){
-    setFilterRegion(countries); 
-  }else{   
-    filter.target.value === "All" ? setFilterRegion(countries) : setFilterRegion(countries.filter((x)=> x.region === filter.target.value))
+  const filterCountries = ()=>{
+    value === "All" ? setFilterRegion(countries) : setFilterRegion(countries.filter((x)=> x.region === value))
+  }
+  const show = (e)=>{
+    setValue(e.target.value)
   }
   
-  }
 
   
   return (
     <div className={styles.divqw}>
-      <div className={styles.head}><h3 className={styles.txt}>Liczba krajów: {filterRegion.length}</h3></div>
+      <div className={styles.head}>
+        <h3 className={styles.txt}>
+        {value === "All" ? "Number of countries in the world : " : `Number of countries in ${value} : `  } {filterRegion.length}
+          </h3>
+        </div>
       <div className={styles.head}>
         <div>szukanie</div>
         <div>
           <select>
-            <option onClick={filterCountries} value="All">All regions</option>
-            <option onClick={filterCountries} value="Africa">Africa</option>
-            <option onClick={filterCountries} value="Americas">Americas</option>
-            <option onClick={filterCountries} value="Asia">Asia</option>
-            <option onClick={filterCountries} value="Europe">Europe</option>
-            <option onClick={filterCountries} value="Oceania">Oceania</option>
+            <option onClick={show} value="All">All regions</option>
+            <option onClick={show} value="Africa">Africa</option>
+            <option onClick={show} value="Americas">Americas</option>
+            <option onClick={show} value="Asia">Asia</option>
+            <option onClick={show} value="Europe">Europe</option>
+            <option onClick={show} value="Oceania">Oceania</option>
           </select>
 
         </div>
