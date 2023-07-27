@@ -19,7 +19,9 @@
 }
 .txt1{
     color: rgb(189, 190, 190);
+    letter-spacing: 0px;
 }
 .txt2{
     color: rgb(234, 234, 235);
+    letter-spacing: 2px;
 }

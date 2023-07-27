@@ -11,13 +11,30 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    
+    column-gap: 1%;
+    row-gap: 0.05%;
 }
 .head{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-around;
+    padding: 20px;
 }
 .select {
-    background-color: aqua;
+  font-weight: 500;
+  width: 110%;
+  letter-spacing: 2px;
+  height: 100%;
+  padding: 1rem;
+  background-color: #FAFCFD;
+  border: 3px solid transparent;
+  transition: .3s ease-in-out;
+  }
+  .search{
+    letter-spacing: 2px;
+    padding: 1rem;
+    background-color: #FAFCFD;
+    border: 3px solid transparent;
+    transition: .3s ease-in-out;
   }

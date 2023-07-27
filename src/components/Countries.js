@@ -5,21 +5,32 @@ import styles from './Counstris.module.css'
 
 
 const Countries = ({ countries }) => {
-
   const[filterRegion,setFilterRegion]=useState([]);
-  const[value, setValue]=useState("All");
+  const[value, setValue]=useState("All regions");
+  const[searchName, setSearchName] = useState("")
   
+
   useEffect(()=>{filterCountries();},[value,countries]);
-
-
-  const filterCountries = ()=>{
-    value === "All" ? setFilterRegion(countries) : setFilterRegion(countries.filter((x)=> x.region === value))
-  }
-  const show = (e)=>{
-    setValue(e.target.value)
-  }
+  useEffect(()=>{filterCountriesName();},[searchName]);
   
+  const filterCountries = ()=>{
+    setSearchName("");
+    value === "All regions" ? setFilterRegion(countries) : setFilterRegion(countries.filter((x)=> x.region === value))
+    
+  }
 
+  const filterCountriesName = ()=>{
+    
+    let tab=[];
+    value !== "All regions" ? tab = countries.filter((x)=> x.region === value) : tab = countries;
+    
+    
+    searchName === "" ? setFilterRegion(tab) : setFilterRegion(tab.filter((x) => x.name.common.includes(searchName)))
+    
+  }
+
+ 
+  
   
   return (
     <div className={styles.divqw}>
@@ -29,18 +40,20 @@ const Countries = ({ countries }) => {
           </h3>
         </div>
       <div className={styles.head}>
-        <div>szukanie</div>
+        <div >
+          <input onChange={(e)=>setSearchName(e.target.value)} className={styles.search} value={searchName} type="text" name="country" id="input" placeholder="Search country by name" /></div>
+         
         <div>
-          <select>
-            <option onClick={show} value="All">All regions</option>
-            <option onClick={show} value="Africa">Africa</option>
-            <option onClick={show} value="Americas">Americas</option>
-            <option onClick={show} value="Asia">Asia</option>
-            <option onClick={show} value="Europe">Europe</option>
-            <option onClick={show} value="Oceania">Oceania</option>
+          <select className={styles.select} defaultValue="All regions">
+            <option selected onClick={(e)=>setValue(e.target.label)} value="All regions" label="All regions" ></option>
+            <option onClick={(e)=>setValue(e.target.label)} value="Africa" label="Africa"></option>
+            <option onClick={(e)=>setValue(e.target.label)} value="Americas" label="Americas"></option>
+            <option onClick={(e)=>setValue(e.target.label)} value="Asia" label="Asia"></option>
+            <option onClick={(e)=>setValue(e.target.label)} value="Europe" label="Europe"></option>
+            <option onClick={(e)=>setValue(e.target.label)} value="Oceania" label="Oceania"></option>
           </select>
-
         </div>
+        
       </div>
       <div className={styles.wrapper}>{filterRegion.map((xc) => <CountriesTempletes key={xc.cca3} country={xc} />)}</div>
     </div>
