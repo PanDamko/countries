@@ -1,0 +1,23 @@
+.txt{
+    color: rgb(234, 234, 235);
+}
+.divqw{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.select {
+    background-color: aqua;
+  }

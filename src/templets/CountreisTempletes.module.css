@@ -1,0 +1,25 @@
+.card{
+    background-color: rgb(63, 63, 63);
+    width: 300px;
+    border-radius: 5%;
+
+}
+.image{
+    width: 300px;
+    height: 200px;
+    border-radius: 5%;
+}
+.divcard{
+    
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-direction: column;
+
+}
+.txt1{
+    color: rgb(189, 190, 190);
+}
+.txt2{
+    color: rgb(234, 234, 235);
+}
